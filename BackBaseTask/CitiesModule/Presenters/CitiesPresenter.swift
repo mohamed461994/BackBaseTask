@@ -10,6 +10,7 @@ import Foundation
 protocol CitiesViewDelegate: NSObjectProtocol {
     func startLoading()
     func stopLoading()
+    func setFillteredCities(cities: [City])
 }
 
 class CitiesPresenter {
@@ -18,9 +19,15 @@ class CitiesPresenter {
     
     init(citiesService: CitiesService) {
         self.citiesService = citiesService
+        DispatchQueue.global(qos: .userInteractive).async { [weak self] in
+            self?.loadCitiesDate()
+        }
+    }
+    
+    func loadCitiesDate() {
         citiesService.loadCitiesJsonData { [weak self] citiesResponse in
             self?.delegate?.stopLoading()
+            self?.delegate?.setFillteredCities(cities: citiesResponse ?? [City]())
         }
-        delegate?.startLoading()
     }
 }
