@@ -7,15 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8474307026695C4C000D0144 /* CitiesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8474306F26695C4C000D0144 /* CitiesPresenter.swift */; };
+		8474307526695ED7000D0144 /* CitiesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8474307426695ED7000D0144 /* CitiesService.swift */; };
 		84BD35EA2669324D0095E116 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BD35E92669324D0095E116 /* AppDelegate.swift */; };
 		84BD35EC2669324D0095E116 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BD35EB2669324D0095E116 /* SceneDelegate.swift */; };
-		84BD35EE2669324D0095E116 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BD35ED2669324D0095E116 /* ViewController.swift */; };
+		84BD35EE2669324D0095E116 /* CitiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BD35ED2669324D0095E116 /* CitiesViewController.swift */; };
 		84BD35F12669324D0095E116 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84BD35EF2669324D0095E116 /* Main.storyboard */; };
 		84BD35F42669324D0095E116 /* BackBaseTask.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 84BD35F22669324D0095E116 /* BackBaseTask.xcdatamodeld */; };
 		84BD35F62669324F0095E116 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84BD35F52669324F0095E116 /* Assets.xcassets */; };
 		84BD35F92669324F0095E116 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84BD35F72669324F0095E116 /* LaunchScreen.storyboard */; };
 		84BD36042669324F0095E116 /* BackBaseTaskTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BD36032669324F0095E116 /* BackBaseTaskTests.swift */; };
 		84BD360F2669324F0095E116 /* BackBaseTaskUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BD360E2669324F0095E116 /* BackBaseTaskUITests.swift */; };
+		84BD363A266933F10095E116 /* cities.json in Resources */ = {isa = PBXBuildFile; fileRef = 84BD3639266933F10095E116 /* cities.json */; };
+		84BD36422669349B0095E116 /* CityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BD36412669349B0095E116 /* CityModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,10 +40,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8474306F26695C4C000D0144 /* CitiesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitiesPresenter.swift; sourceTree = "<group>"; };
+		8474307426695ED7000D0144 /* CitiesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitiesService.swift; sourceTree = "<group>"; };
 		84BD35E62669324D0095E116 /* BackBaseTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BackBaseTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84BD35E92669324D0095E116 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84BD35EB2669324D0095E116 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		84BD35ED2669324D0095E116 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		84BD35ED2669324D0095E116 /* CitiesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitiesViewController.swift; sourceTree = "<group>"; };
 		84BD35F02669324D0095E116 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		84BD35F32669324D0095E116 /* BackBaseTask.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BackBaseTask.xcdatamodel; sourceTree = "<group>"; };
 		84BD35F52669324F0095E116 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -51,6 +57,8 @@
 		84BD360A2669324F0095E116 /* BackBaseTaskUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BackBaseTaskUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		84BD360E2669324F0095E116 /* BackBaseTaskUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackBaseTaskUITests.swift; sourceTree = "<group>"; };
 		84BD36102669324F0095E116 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		84BD3639266933F10095E116 /* cities.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cities.json; sourceTree = "<group>"; };
+		84BD36412669349B0095E116 /* CityModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +86,40 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		847430662669582C000D0144 /* DataSource */ = {
+			isa = PBXGroup;
+			children = (
+				84BD3639266933F10095E116 /* cities.json */,
+				8474307426695ED7000D0144 /* CitiesService.swift */,
+			);
+			path = DataSource;
+			sourceTree = "<group>";
+		};
+		847430672669583F000D0144 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				84BD35ED2669324D0095E116 /* CitiesViewController.swift */,
+				84BD35EF2669324D0095E116 /* Main.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		847430682669584F000D0144 /* Presenters */ = {
+			isa = PBXGroup;
+			children = (
+				8474306F26695C4C000D0144 /* CitiesPresenter.swift */,
+			);
+			path = Presenters;
+			sourceTree = "<group>";
+		};
+		847430692669585B000D0144 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				84BD36412669349B0095E116 /* CityModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		84BD35DD2669324D0095E116 = {
 			isa = PBXGroup;
 			children = (
@@ -101,14 +143,11 @@
 		84BD35E82669324D0095E116 /* BackBaseTask */ = {
 			isa = PBXGroup;
 			children = (
+				84BD3620266932BD0095E116 /* SupportFiles */,
+				84BD361F2669328F0095E116 /* CitiesModule */,
 				84BD35E92669324D0095E116 /* AppDelegate.swift */,
 				84BD35EB2669324D0095E116 /* SceneDelegate.swift */,
-				84BD35ED2669324D0095E116 /* ViewController.swift */,
-				84BD35EF2669324D0095E116 /* Main.storyboard */,
-				84BD35F52669324F0095E116 /* Assets.xcassets */,
 				84BD35F72669324F0095E116 /* LaunchScreen.storyboard */,
-				84BD35FA2669324F0095E116 /* Info.plist */,
-				84BD35F22669324D0095E116 /* BackBaseTask.xcdatamodeld */,
 			);
 			path = BackBaseTask;
 			sourceTree = "<group>";
@@ -129,6 +168,27 @@
 				84BD36102669324F0095E116 /* Info.plist */,
 			);
 			path = BackBaseTaskUITests;
+			sourceTree = "<group>";
+		};
+		84BD361F2669328F0095E116 /* CitiesModule */ = {
+			isa = PBXGroup;
+			children = (
+				847430692669585B000D0144 /* Models */,
+				847430682669584F000D0144 /* Presenters */,
+				847430672669583F000D0144 /* Views */,
+				847430662669582C000D0144 /* DataSource */,
+			);
+			path = CitiesModule;
+			sourceTree = "<group>";
+		};
+		84BD3620266932BD0095E116 /* SupportFiles */ = {
+			isa = PBXGroup;
+			children = (
+				84BD35FA2669324F0095E116 /* Info.plist */,
+				84BD35F52669324F0095E116 /* Assets.xcassets */,
+				84BD35F22669324D0095E116 /* BackBaseTask.xcdatamodeld */,
+			);
+			path = SupportFiles;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -234,6 +294,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84BD363A266933F10095E116 /* cities.json in Resources */,
 				84BD35F92669324F0095E116 /* LaunchScreen.storyboard in Resources */,
 				84BD35F62669324F0095E116 /* Assets.xcassets in Resources */,
 				84BD35F12669324D0095E116 /* Main.storyboard in Resources */,
@@ -261,10 +322,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84BD36422669349B0095E116 /* CityModel.swift in Sources */,
 				84BD35F42669324D0095E116 /* BackBaseTask.xcdatamodeld in Sources */,
-				84BD35EE2669324D0095E116 /* ViewController.swift in Sources */,
+				84BD35EE2669324D0095E116 /* CitiesViewController.swift in Sources */,
+				8474307026695C4C000D0144 /* CitiesPresenter.swift in Sources */,
 				84BD35EA2669324D0095E116 /* AppDelegate.swift in Sources */,
 				84BD35EC2669324D0095E116 /* SceneDelegate.swift in Sources */,
+				8474307526695ED7000D0144 /* CitiesService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -370,7 +434,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -425,7 +489,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -442,7 +506,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YNX5X6328E;
-				INFOPLIST_FILE = BackBaseTask/Info.plist;
+				INFOPLIST_FILE = BackBaseTask/SupportFiles/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -461,7 +525,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YNX5X6328E;
-				INFOPLIST_FILE = BackBaseTask/Info.plist;
+				INFOPLIST_FILE = BackBaseTask/SupportFiles/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
