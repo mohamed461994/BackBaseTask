@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		8474307026695C4C000D0144 /* CitiesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8474306F26695C4C000D0144 /* CitiesPresenter.swift */; };
 		8474307526695ED7000D0144 /* CitiesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8474307426695ED7000D0144 /* CitiesService.swift */; };
+		8474307F266A0C46000D0144 /* CityLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8474307D266A0C46000D0144 /* CityLocationViewController.swift */; };
+		84743080266A0C46000D0144 /* LocationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8474307E266A0C46000D0144 /* LocationViewController.xib */; };
 		84BD35EA2669324D0095E116 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BD35E92669324D0095E116 /* AppDelegate.swift */; };
 		84BD35EC2669324D0095E116 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BD35EB2669324D0095E116 /* SceneDelegate.swift */; };
 		84BD35EE2669324D0095E116 /* CitiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BD35ED2669324D0095E116 /* CitiesViewController.swift */; };
@@ -42,6 +44,8 @@
 /* Begin PBXFileReference section */
 		8474306F26695C4C000D0144 /* CitiesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitiesPresenter.swift; sourceTree = "<group>"; };
 		8474307426695ED7000D0144 /* CitiesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitiesService.swift; sourceTree = "<group>"; };
+		8474307D266A0C46000D0144 /* CityLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityLocationViewController.swift; sourceTree = "<group>"; };
+		8474307E266A0C46000D0144 /* LocationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LocationViewController.xib; sourceTree = "<group>"; };
 		84BD35E62669324D0095E116 /* BackBaseTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BackBaseTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84BD35E92669324D0095E116 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84BD35EB2669324D0095E116 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -100,6 +104,8 @@
 			children = (
 				84BD35ED2669324D0095E116 /* CitiesViewController.swift */,
 				84BD35EF2669324D0095E116 /* Main.storyboard */,
+				8474307D266A0C46000D0144 /* CityLocationViewController.swift */,
+				8474307E266A0C46000D0144 /* LocationViewController.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -143,8 +149,8 @@
 		84BD35E82669324D0095E116 /* BackBaseTask */ = {
 			isa = PBXGroup;
 			children = (
-				84BD3620266932BD0095E116 /* SupportFiles */,
 				84BD361F2669328F0095E116 /* CitiesModule */,
+				84BD3620266932BD0095E116 /* SupportFiles */,
 				84BD35E92669324D0095E116 /* AppDelegate.swift */,
 				84BD35EB2669324D0095E116 /* SceneDelegate.swift */,
 				84BD35F72669324F0095E116 /* LaunchScreen.storyboard */,
@@ -297,6 +303,7 @@
 				84BD363A266933F10095E116 /* cities.json in Resources */,
 				84BD35F92669324F0095E116 /* LaunchScreen.storyboard in Resources */,
 				84BD35F62669324F0095E116 /* Assets.xcassets in Resources */,
+				84743080266A0C46000D0144 /* LocationViewController.xib in Resources */,
 				84BD35F12669324D0095E116 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -329,6 +336,7 @@
 				84BD35EA2669324D0095E116 /* AppDelegate.swift in Sources */,
 				84BD35EC2669324D0095E116 /* SceneDelegate.swift in Sources */,
 				8474307526695ED7000D0144 /* CitiesService.swift in Sources */,
+				8474307F266A0C46000D0144 /* CityLocationViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

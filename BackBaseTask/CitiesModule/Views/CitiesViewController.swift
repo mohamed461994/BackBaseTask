@@ -11,7 +11,7 @@ protocol CitiesPresenterDelegate: NSObjectProtocol {
     func searchFor(userInput: String)
 }
 
-class CitiesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class CitiesViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView?
@@ -34,7 +34,10 @@ class CitiesViewController: UIViewController, UITableViewDelegate, UITableViewDa
         searchBar.placeholder = "Search"
         navigationItem.titleView = searchBar
     }
-    
+}
+
+extension CitiesViewController: UITableViewDelegate, UITableViewDataSource {
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return filtteredCities.count
     }
@@ -44,6 +47,12 @@ class CitiesViewController: UIViewController, UITableViewDelegate, UITableViewDa
         cell.textLabel?.text = "\(filtteredCities[indexPath.row].name), \(filtteredCities[indexPath.row].country)"
         cell.detailTextLabel?.text = "lat: \(filtteredCities[indexPath.row].coord.lat)   lon: \(filtteredCities[indexPath.row].coord.lon)"
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let locationViewController = CityLocationViewController(nibName: "LocationViewController", bundle: nil)
+        locationViewController.city = filtteredCities[indexPath.row]
+        navigationController?.pushViewController(locationViewController, animated: false)
     }
 }
 
