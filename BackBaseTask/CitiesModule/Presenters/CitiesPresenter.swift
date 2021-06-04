@@ -7,27 +7,24 @@
 
 import Foundation
 
-protocol CitiesViewDelegate: NSObjectProtocol {
+protocol CitiesPresenterToViewProtocol: class {
     func startLoading()
     func stopLoading()
     func setFillteredCities(cities: [City])
 }
 
 class CitiesPresenter {
-    let citiesService: CitiesService
-    weak var delegate: CitiesViewDelegate?
-    
-    init(citiesService: CitiesService) {
-        self.citiesService = citiesService
-        DispatchQueue.global(qos: .userInteractive).async { [weak self] in
-            self?.loadCitiesDate()
-        }
+   
+    var viewDelegate: CitiesPresenterToViewProtocol!
+}
+
+extension CitiesPresenter: CitiesInteractorToPresenterProtocol {
+    func dataIsReady() {
+        viewDelegate.stopLoading()
     }
     
-    func loadCitiesDate() {
-        citiesService.loadCitiesJsonData { [weak self] citiesResponse in
-            self?.delegate?.stopLoading()
-            self?.delegate?.setFillteredCities(cities: citiesResponse ?? [City]())
-        }
+    func citiesSearchResults(cities: [City]) {
+        viewDelegate.setFillteredCities(cities: cities)
     }
+    
 }

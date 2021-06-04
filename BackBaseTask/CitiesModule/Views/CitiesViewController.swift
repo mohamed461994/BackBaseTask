@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol CitiesPresenterDelegate: NSObjectProtocol {
+protocol CitiesViewToInteractorProtocol: class {
     func searchFor(userInput: String)
 }
 
@@ -15,7 +15,8 @@ class CitiesViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView?
-    let citiesPresenter = CitiesPresenter(citiesService: CitiesService.shared())
+    var interactorDelegate: CitiesViewToInteractorProtocol!
+    var citiesRouter: citiesRouterProtocol!
     lazy var searchBar = UISearchBar(frame: CGRect.zero)
     var filtteredCities: [City] = []
     
@@ -26,13 +27,12 @@ class CitiesViewController: UIViewController {
     }
     
     func setupViews() {
-        activityIndicator?.startAnimating()
-        citiesPresenter.delegate = self
         searchBar.delegate = self
         tableView.delegate = self
         tableView.dataSource = self
         searchBar.placeholder = "Search"
         navigationItem.titleView = searchBar
+        activityIndicator?.startAnimating()
     }
 }
 
@@ -50,13 +50,11 @@ extension CitiesViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let locationViewController = CityLocationViewController(nibName: "LocationViewController", bundle: nil)
-        locationViewController.city = filtteredCities[indexPath.row]
-        navigationController?.pushViewController(locationViewController, animated: false)
+        citiesRouter.navigateToLocationScreen(view: self, cityInfo: filtteredCities[indexPath.row])
     }
 }
 
-extension CitiesViewController: CitiesViewDelegate {
+extension CitiesViewController: CitiesPresenterToViewProtocol {
     func setFillteredCities(cities: [City]) {
         filtteredCities = cities
         DispatchQueue.main.async { [weak self] in
@@ -80,6 +78,11 @@ extension CitiesViewController: CitiesViewDelegate {
 
 extension CitiesViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-       
+        interactorDelegate.searchFor(userInput: searchText)
+//        let fiterServices = filtteredCities.filter({$0.name.lowercased().hasPrefix(searchText.lowercased())})
+//        filtteredCities = fiterServices
+//        DispatchQueue.main.async { [weak self] in
+//            self?.tableView.reloadData()
+//        }
     }
 }
