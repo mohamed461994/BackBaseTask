@@ -9,10 +9,14 @@ import UIKit
 import MapKit
 
 class CityLocationViewController: UIViewController {
-
+    
+    // MARK: - IBOutlets
     @IBOutlet weak var mapView: MKMapView!
+    
+    // MARK: - Properties
     var city: City?
     
+    // MARK: - Methods
     override func viewDidLoad() {
         super.viewDidLoad()
 

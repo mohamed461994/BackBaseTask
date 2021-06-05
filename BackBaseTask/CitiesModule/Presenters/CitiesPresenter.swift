@@ -7,6 +7,8 @@
 
 import Foundation
 
+/// This protocol is implemented by cities View
+/// Presenter To View
 protocol CitiesPresenterToViewProtocol: class {
     func startLoading()
     func stopLoading()
@@ -14,17 +16,19 @@ protocol CitiesPresenterToViewProtocol: class {
 }
 
 class CitiesPresenter {
-   
     var viewDelegate: CitiesPresenterToViewProtocol!
+    
 }
 
 extension CitiesPresenter: CitiesInteractorToPresenterProtocol {
+    
+    /// Interactor will call this method when cities data is ready
     func dataIsReady() {
         viewDelegate.stopLoading()
     }
     
+    /// Interactor will call this method when search result is ready
     func citiesSearchResults(cities: [City]) {
         viewDelegate.setFillteredCities(cities: cities)
     }
-    
 }
