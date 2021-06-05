@@ -55,18 +55,18 @@ class CitiesInteractor {
     
     func sortCitiesAlphabetically() {
         for (cityFirstCarshKey, _) in citiesDistributedData {
-            citiesDistributedData[cityFirstCarshKey] = citiesDistributedData[cityFirstCarshKey]?.sorted { $0.name.lowercased() < $1.name.lowercased() }
+            citiesDistributedData[cityFirstCarshKey] = citiesDistributedData[cityFirstCarshKey]?.sorted { $0 < $1 }
         }
     }
     
     func binarySearch(in citiesArray: [City], for searchedText: String) -> [City] {
         var leftStartIndex = 0
         var rightEndIndex = citiesArray.count - 1
+        var filteredArray = [City]()
         
         while leftStartIndex <= rightEndIndex {
             let middleIndex = (leftStartIndex + rightEndIndex) / 2
             if citiesArray[middleIndex] == searchedText {
-                var filteredArray = [City]()
                 for index in (leftStartIndex..<middleIndex).reversed() {
                     if citiesArray[index].name.lowercased().hasPrefix(searchedText) {
                         filteredArray.insert(citiesArray[index], at: 0)

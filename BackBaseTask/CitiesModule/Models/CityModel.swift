@@ -8,7 +8,8 @@
 import Foundation
 
 // MARK: - City
-struct City: Codable {
+struct City: Codable, Comparable {
+    
     let country, name: String
     let id: Int
     let coord: Coord
@@ -18,21 +19,17 @@ struct City: Codable {
         case id = "_id"
         case coord
     }
+    
+    static func < (lhs: City, rhs: City) -> Bool {
+        return lhs.name.lowercased() < rhs.name.lowercased()
+    }
+    
+    static func == (lhs: City, rhs: City) -> Bool {
+        return lhs.name.lowercased() == rhs.name.lowercased()
+    }
 }
 
 // MARK: - Coordinates
 struct Coord: Codable {
     let lon, lat: Double
-}
-
-func ==(lhs: City, rhs: String) -> Bool {
-    return lhs.name.lowercased().hasPrefix(rhs.lowercased())
-}
-
-func <(lhs: City, rhs: String) -> Bool {
-    return lhs.name.lowercased() < rhs.lowercased()
-}
-
-func >(lhs: City, rhs: String) -> Bool {
-    return lhs.name.lowercased() > rhs.lowercased()
 }
