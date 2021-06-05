@@ -14,36 +14,23 @@ protocol CitiesInteractorToPresenterProtocol: class {
 
 class CitiesInteractor {
     
-    var presenterDelegate: CitiesInteractorToPresenterProtocol!
+    var presenterDelegate: CitiesInteractorToPresenterProtocol?
     var citiesDistributedData: [String: [City]] = [:]
     
-    init() {
-        DispatchQueue.global(qos: .userInteractive).async { [weak self] in
-            self?.loadCitiesJsonData()
+    func mapCitiesJsonData(from data: Data?) -> [City] {
+        guard let citiesData = data else {return [City]()}
+        do {
+            let citiesJsonData = try JSONDecoder().decode([City].self, from: citiesData)
+            return citiesJsonData
+        } catch {
+            print("error:\(error)")
         }
-    }
-    
-    func loadCitiesJsonData() {
-        if let url = Bundle.main.url(forResource: "cities", withExtension: "json") {
-            do {
-                let data = try Data(contentsOf: url)
-                let decoder = JSONDecoder()
-                let citiesJsonData = try decoder.decode([City].self, from: data)
-                print(citiesJsonData.count)
-                
-                addCitiesToDataSourceBasedOnFirstChar(cities: citiesJsonData)
-                print(citiesDistributedData.count)
-                sortCitiesAlphabetically()
-                presenterDelegate.dataIsReady()
-            } catch {
-                print("error:\(error)")
-            }
-        }
+        return [City]()
     }
     
     func addCitiesToDataSourceBasedOnFirstChar(cities: [City]) {
         for city in cities {
-            let firstChar = String(city.name.prefix(1))
+            let firstChar = String(city.name.prefix(1).lowercased())
             if citiesDistributedData[firstChar] != nil {
                 citiesDistributedData[firstChar]?.append(city)
             } else {
@@ -57,6 +44,17 @@ class CitiesInteractor {
         for (cityFirstCarshKey, _) in citiesDistributedData {
             citiesDistributedData[cityFirstCarshKey] = citiesDistributedData[cityFirstCarshKey]?.sorted { $0 < $1 }
         }
+    }
+    
+    func loadCitiesFileData() -> Data? {
+        if let url = Bundle.main.url(forResource: "cities", withExtension: "json") {
+            do {
+                return try Data(contentsOf: url)
+            } catch {
+                print("error:\(error)")
+            }
+        }
+        return nil
     }
     
     func binarySearch(in citiesArray: [City], for searchedText: String) -> [City] {
@@ -90,9 +88,20 @@ class CitiesInteractor {
 }
 
 extension CitiesInteractor: CitiesViewToInteractorProtocol {
+    func prepareCitiesData() {
+        DispatchQueue.global(qos: .userInteractive).async { [weak self] in
+            guard let weakSelf = self else {return}
+            let loadedData = weakSelf.loadCitiesFileData()
+            let citiesModels = weakSelf.mapCitiesJsonData(from: loadedData)
+            weakSelf.addCitiesToDataSourceBasedOnFirstChar(cities: citiesModels)
+            weakSelf.sortCitiesAlphabetically()
+            weakSelf.presenterDelegate?.dataIsReady()
+        }
+    }
+    
     func searchFor(userInput: String) {
-        let firstChar = String(userInput.prefix(1))
+        let firstChar = String(userInput.prefix(1)).lowercased()
         let fiteredCities = binarySearch(in: citiesDistributedData[firstChar] ?? [City](), for: userInput.lowercased())
-        presenterDelegate.citiesSearchResults(cities: fiteredCities)
+        presenterDelegate?.citiesSearchResults(cities: fiteredCities)
     }
 }
