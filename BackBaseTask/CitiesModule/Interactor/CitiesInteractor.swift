@@ -22,7 +22,7 @@ class CitiesInteractor {
             self?.loadCitiesJsonData()
         }
     }
-
+    
     func loadCitiesJsonData() {
         if let url = Bundle.main.url(forResource: "cities", withExtension: "json") {
             do {
@@ -59,12 +59,44 @@ class CitiesInteractor {
         }
     }
     
+    func binarySearch(in citiesArray: [City], for searchedText: String) -> [City] {
+        var leftStartIndex = 0
+        var rightEndIndex = citiesArray.count - 1
+        
+        while leftStartIndex <= rightEndIndex {
+            
+            let middleIndex = (leftStartIndex + rightEndIndex) / 2
+            if citiesArray[middleIndex].name.lowercased().hasPrefix(searchedText) {
+                var filteredArray = [City]()
+                for index in (leftStartIndex..<middleIndex).reversed() {
+                    if citiesArray[index].name.lowercased().hasPrefix(searchedText) {
+                        filteredArray.insert(citiesArray[index], at: 0)
+                    }
+                }
+                for index in middleIndex...rightEndIndex {
+                    if citiesArray[index].name.lowercased().hasPrefix(searchedText) {
+                        filteredArray.append(citiesArray[index])
+                    }
+                }
+                return filteredArray
+            } else if citiesArray[middleIndex].name.lowercased() < searchedText {
+                leftStartIndex = middleIndex + 1
+            } else if citiesArray[middleIndex].name.lowercased() > searchedText {
+                rightEndIndex = middleIndex - 1
+            }
+        }
+        
+        return [City]()
+    }
 }
 
 extension CitiesInteractor: CitiesViewToInteractorProtocol {
     func searchFor(userInput: String) {
         let firstChar = String(userInput.prefix(1))
         let fiteredCities = citiesDistributedData[firstChar]?.filter({$0.name.lowercased().hasPrefix(userInput.lowercased())})
+        let filterWithB = binarySearch(in: citiesDistributedData[firstChar] ?? [City](), for: userInput.lowercased())
+        print(fiteredCities?.count ?? 0)
+        print(filterWithB.count)
         presenterDelegate.citiesSearchResults(cities: fiteredCities ?? [City]())
     }
 }
