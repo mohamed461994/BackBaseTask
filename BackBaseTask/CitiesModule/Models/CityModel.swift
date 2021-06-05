@@ -24,3 +24,15 @@ struct City: Codable {
 struct Coord: Codable {
     let lon, lat: Double
 }
+
+func ==(lhs: City, rhs: String) -> Bool {
+    return lhs.name.lowercased().hasPrefix(rhs.lowercased())
+}
+
+func <(lhs: City, rhs: String) -> Bool {
+    return lhs.name.lowercased() < rhs.lowercased()
+}
+
+func >(lhs: City, rhs: String) -> Bool {
+    return lhs.name.lowercased() > rhs.lowercased()
+}
