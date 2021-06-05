@@ -70,12 +70,12 @@ class CitiesInteractor {
                 for index in (leftStartIndex..<middleIndex).reversed() {
                     if citiesArray[index].name.lowercased().hasPrefix(searchedText) {
                         filteredArray.insert(citiesArray[index], at: 0)
-                    }
+                    } else {break}
                 }
                 for index in middleIndex...rightEndIndex {
                     if citiesArray[index].name.lowercased().hasPrefix(searchedText) {
                         filteredArray.append(citiesArray[index])
-                    }
+                    } else {break}
                 }
                 return filteredArray
             } else if citiesArray[middleIndex] < searchedText {
