@@ -12,6 +12,9 @@ protocol citiesRouterProtocol {
 }
 
 class CitiesRouter {
+    
+    /// Create Cities Module
+    /// - Returns: CitiesViewController impeded in UINavigationController
     static func createCitiesModule() -> UINavigationController {
         let citiesPresenter = CitiesPresenter()
         let citiesInteractor = CitiesInteractor()
@@ -26,6 +29,11 @@ class CitiesRouter {
 }
 
 extension CitiesRouter: citiesRouterProtocol {
+    
+    /// Make Location View Controller pushed over your curent view controller
+    /// - Parameters:
+    ///   - view: View which location view controller will be pushed over
+    ///   - cityInfo: City model which its coordinates will be add on the map
     func navigateToLocationScreen(view: CitiesViewController, cityInfo: City) {
         let locationViewController = CityLocationViewController(nibName: "LocationViewController", bundle: nil)
         locationViewController.city = cityInfo
