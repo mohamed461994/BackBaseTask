@@ -22,7 +22,7 @@ class CitiesInteractor {
     /// I've chosen dictionary to represent all cities data so I can group cities In Arrays based on the first character of each city.
     /// This approach decreases search time as I'll search based on the first character of the user typed string.
     /// Time complexity for accessing an array of character is constant.
-    var citiesDataSource: [String: [City]] = [:]
+    var citiesDistributedData: [String: [City]] = [:]
     
     /// This method will read cities.json file and return its content as data
     /// - Returns: cities json data
@@ -59,11 +59,11 @@ class CitiesInteractor {
     func addCitiesToDataSourceBasedOnFirstChar(cities: [City]) {
         for city in cities {
             let firstChar = String(city.name.prefix(1).lowercased())
-            if citiesDataSource[firstChar] != nil {
-                citiesDataSource[firstChar]?.append(city)
+            if citiesDistributedData[firstChar] != nil {
+                citiesDistributedData[firstChar]?.append(city)
             } else {
-                citiesDataSource[firstChar] = [City]()
-                citiesDataSource[firstChar]?.append(city)
+                citiesDistributedData[firstChar] = [City]()
+                citiesDistributedData[firstChar]?.append(city)
             }
         }
     }
@@ -71,8 +71,8 @@ class CitiesInteractor {
     /// This method will loop over all dictionary values of type [City] and Sort it alphabetically
     /// Note: I've implement Comparable protocol by City Model to be able to compare between Cities Models
     func sortCitiesAlphabetically() {
-        for (cityFirstCarshKey, _) in citiesDataSource {
-            citiesDataSource[cityFirstCarshKey] = citiesDataSource[cityFirstCarshKey]?.sorted { $0 < $1 }
+        for (cityFirstCarshKey, _) in citiesDistributedData {
+            citiesDistributedData[cityFirstCarshKey] = citiesDistributedData[cityFirstCarshKey]?.sorted { $0 < $1 }
         }
     }
     
@@ -87,7 +87,6 @@ class CitiesInteractor {
         var leftStartIndex = 0
         var rightEndIndex = citiesArray.count - 1
         var filteredArray = [City]()
-        
         while leftStartIndex <= rightEndIndex {
             let middleIndex = (leftStartIndex + rightEndIndex) / 2
             if citiesArray[middleIndex] == searchedText {
@@ -133,7 +132,7 @@ extension CitiesInteractor: CitiesViewToInteractorProtocol {
     /// - Parameter userInput: String that user typed in search bar
     func searchFor(userInput: String) {
         let firstChar = String(userInput.prefix(1)).lowercased()
-        let fiteredCities = binarySearch(in: citiesDataSource[firstChar] ?? [City](), for: userInput.lowercased())
+        let fiteredCities = binarySearch(in: citiesDistributedData[firstChar] ?? [City](), for: userInput.lowercased())
         presenterDelegate?.citiesSearchResults(cities: fiteredCities)
     }
 }
