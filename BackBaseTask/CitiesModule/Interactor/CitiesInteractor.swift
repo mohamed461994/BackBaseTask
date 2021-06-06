@@ -92,12 +92,12 @@ class CitiesInteractor {
             let middleIndex = (leftStartIndex + rightEndIndex) / 2
             if citiesArray[middleIndex] == searchedText {
                 for index in (leftStartIndex..<middleIndex).reversed() {
-                    if citiesArray[index].name.lowercased().hasPrefix(searchedText) {
+                    if citiesArray[index].name.lowercased().hasPrefix(searchedText.lowercased()) {
                         filteredArray.insert(citiesArray[index], at: 0)
                     } else {break}
                 }
                 for index in middleIndex...rightEndIndex {
-                    if citiesArray[index].name.lowercased().hasPrefix(searchedText) {
+                    if citiesArray[index].name.lowercased().hasPrefix(searchedText.lowercased()) {
                         filteredArray.append(citiesArray[index])
                     } else {break}
                 }
