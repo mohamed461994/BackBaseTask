@@ -21,7 +21,7 @@ struct City: Codable, Comparable {
     }
     
     static func < (lhs: City, rhs: City) -> Bool {
-        return lhs.name.lowercased() < rhs.name.lowercased()
+        return "\(lhs.name) \(lhs.country)".lowercased() < "\(rhs.name) \(rhs.country)".lowercased()
     }
     
     static func == (lhs: City, rhs: City) -> Bool {
