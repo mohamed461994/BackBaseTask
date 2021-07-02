@@ -65,12 +65,13 @@ If the given prefix is "Al", "Alabama, US" and "Albuquerque, US" are the only re
 If the prefix given is "Alb" then the only result is "Albuquerque, US"
 
 # My Solution
-I have preprocessed the list of cities into a dictionary where the key is the city first character in lowercase, 
-while the value is array of cities that start with the same character.
-### var dataSource: [ String: [ City ] ] = [:] 
-I've alphabetically sorted all arrays in dictionary values.
-Then I've written a binary search algorithm to search but instead of searching in all cities I'll search based on the first character.
-So if the user Typed "Ne" in the search bar I'll search only on the array of cities that start with "N" time for accessing the array of n cities is constant.
+* First I've user VIP-Architecture (Clean Swift Architecture)
+* I have preprocessed the list of cities into a dictionary where the key is the city first character in lowercase, 
+* while the value is array of cities that start with the same character.
+``` var dataSource: [ String: [ City ] ] = [:] ``` 
+* I've alphabetically sorted all arrays in dictionary values.
+* I've written a binary search algorithm to search but instead of searching in all cities I'll search based on the first character.
+    So if the user Typed "Ne" in the search bar I'll search only on the array of cities that start with "N" time for accessing the array of n cities is constant.
 
 
-## Every function had a documentation please read it.
+``` Almost every function had a documentation please read it.```
